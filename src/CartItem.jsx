@@ -21,17 +21,15 @@ cart.forEach(item => {
    onContinueShopping(e);
   };
 
-
-
   const handleIncrement = (item) => {
     dispatch(updateQuantity({
   name: item.name,
   quantity: item.quantity + 1
 }));
 
-  };
+};
 
-  const handleDecrement = (item) => {
+ const handleDecrement = (item) => {
     if (item.quantity > 1) {
   dispatch(updateQuantity({
     name: item.name,
@@ -41,7 +39,7 @@ cart.forEach(item => {
   dispatch(removeItem({ name: item.name }));
 }
 
-  };
+};
 
   const handleRemove = (item) => {
     dispatch(removeItem({ name: item.name }));

@@ -309,7 +309,6 @@ function ProductList({ onHomeClick }) {
             disabled={addedToCart[plant.name]} // disable if already added
             >
               {addedToCart[plant.name] ? "Added to Cart" : "Add to Cart"}
-            Add to Cart
           </button>
         </div>
       ))}

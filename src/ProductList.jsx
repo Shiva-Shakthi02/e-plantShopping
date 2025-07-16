@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
 import {addItem} from './CartSlice.jsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
     const dispatch = useDispatch();
-    const cartItems = useSelector(state => state.cart.items);
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -282,9 +280,9 @@ function ProductList({ onHomeClick }) {
 
                 </div>
                 <div style={styleObjUl}>
-                   <div><a href="#" onClick={handlePlantsClick} style={styleA}>Plants</a></div>
+                    <div><a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
                     <div style={{ position: 'relative' }}>
-                        <a href="#" onClick={handleCartClick} style={styleA}>
+                        <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                             <h1 className='cart'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" height="68" width="68">
                                     <rect width="156" height="156" fill="none"></rect>
@@ -312,7 +310,7 @@ function ProductList({ onHomeClick }) {
                     </div>
                 </div>
             </div>
-            </div>
+
             {!showCart ? (
                 <div className="product-grid">
                  {plantsArray.map((category, index) => ( // Loop through each category in plantsArray
@@ -342,15 +340,14 @@ function ProductList({ onHomeClick }) {
                 </div>
                  ))}
               </div>
-              </div>
-              ))}
-              </div>
-             ) : (
+          </div>
+          ))}
+         </div>
+            ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
-              )
-           };
+            )}
         </div>
     );
 }
 
-export default ProductList;
+export default ProductList; 

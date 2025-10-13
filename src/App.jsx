@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ProductList from './ProductList';
 import './App.css';
 import AboutUs from './AboutUs';
+import Chatbot from "./Chatbot";
 
 function App() {
   
@@ -39,6 +40,7 @@ function App() {
       <div className={`product-list-container ${showProductList ? 'visible' : ''}`}>
         <ProductList onHomeClick={handleHomeClick}/>
       </div>
+      <Chatbot />
     </div>
   );
 }

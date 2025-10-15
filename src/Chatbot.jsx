@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Chatbot.css";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -23,10 +24,10 @@ const Chatbot = () => {
   };
 
   return (
-    <div style={{ position: "fixed", bottom: 20, right: 20, width: 300, background: "#f0f0f0", padding: 10, borderRadius: 10 }}>
-      <div style={{ maxHeight: 300, overflowY: "auto" }}>
+    <div className="chatbot-container">
+      <div className="chatbot-messages">
         {messages.map((msg, index) => (
-          <div key={index} style={{ textAlign: msg.role === "user" ? "right" : "left" }}>
+          <div key={index} className={`chatbot-message ${msg.role}`}>
             <p><b>{msg.role === "user" ? "You" : "Bot"}:</b> {msg.text}</p>
           </div>
         ))}
@@ -35,9 +36,9 @@ const Chatbot = () => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type here..."
-        style={{ width: "80%" }}
+        className="chatbot-input"
       />
-      <button onClick={sendMessage} style={{ width: "18%" }}>Send</button>
+      <button onClick={sendMessage} className="chatbot-button">Send</button>
     </div>
   );
 };
